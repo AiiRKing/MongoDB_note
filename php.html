@@ -1,0 +1,901 @@
+---***---
+What is PHP, acronym for "PHP: Hypertext Preprocessor", widely-used, open source scripting language, scripts are executed on the server, free to download and use.
+PHP file can contain text, HTML, CSS, JavaScript, and PHP code. PHP code is execute on the server, ad result returned to the browser as plain HTML.
+PHP files have extension ".php"
+
+Requirment 
+- install a web server
+- install PHP
+- install a database, such as MySQL
+
+<?php
+
+$txt = "PHP";
+echo "I Love $txt";
+
+?>
+
+----***---
+PHP Syntex 
+<?php
+// PHP code goes here
+?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+        <?php
+                echo "Hello World";
+        ?>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<?php
+			ECHO "Hello World";
+			echo "Hello World";
+			EcHo "Hello World";
+		?>
+	</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<?php
+			$color = "red";
+			echo "My car is " . $color . "<br>";
+			echo "My house is " . $COLOR . "<br>";
+			echo "My boat is " . $coLOR . "<br>";
+		?>
+	</body>
+</html>
+
+
+---***---
+PHP comments 
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<?php
+		// This is a single-line comment
+		# This is also a single-line comment
+		?>
+	</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<?php
+			/*
+			This is a multiple-lines comment block that spans over multiple lines
+			*/
+		?>
+	</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<?php
+			// You can also use comments to leave out parts of a code line 
+		$x = 5 /* + 15  */ + 5 ;
+		echo $x;
+		?>
+	</body>
+</html>
+
+
+---***---
+PHP Variables 
+
+<?php
+
+$txt = "Hello world!";
+$x = 5;
+$y = 10.5;
+
+?>
+
+<?php
+
+$txt = "W3Schools.com";
+echo "I LOVE " . $txt . "!";
+
+?>
+
+
+<?php
+
+$x = 5;
+$y = 4;
+echo $x + $y;
+
+?>
+
+
+---***---
+PHP Variables Scope 
+- local , - global , - static 
+
+<?php
+
+$x = 5; // global scope
+
+function myTest() {
+ //using x inside this function will generate an error
+ echo "<p>Variable x inside function is: $x</p>";
+}
+myTest();
+
+echo "<p>Variable x outside function is: $x</p>";
+?>
+
+<?php
+
+function myTest() {
+ $x = 5; //local scope
+ echo "<p>Variable x inside function is: $x</p>";
+}
+myTest();
+
+// using x outside the function will generate an error
+echo "<p>Variable x outside function is: $x</p>";
+?>
+
+<?php
+
+$x = 5;
+$y = 10;
+
+function myTest() {
+	global $x, $y;
+	$y = $x + $y;
+}
+
+myTest();
+echo $y; // outputs 15
+?>
+
+<?php
+
+function myTest() {
+	static $x = 0;
+	echo $x;
+	$x++;
+}
+
+myTest();
+myTest();
+myTest();
+?>
+
+---***---
+PHP Echo/Print
+
+<?php
+
+echo "<h2> PHP is Fun! </h2>";
+echo "Hello World!<br>";
+echo "I'm about to learn PHP!<br>";
+echo "This ","string ", "was ", "made ", "with multiple parameters." ;
+
+?>
+
+<?php
+
+$txt1 = "Learn PHP";
+$txt2 = "W3Schools.com";
+$x = 5;
+$y = 4;
+
+echo "<h2>" . $txt1 . "</h2>";
+echo "Study PHP at " . $txt2 . "<br>" ;
+echo $x + $y;
+
+?>
+
+---***---
+PHP Print statement
+
+<?php
+
+print "<h2>PHP is Fun!</h2>";
+print "Hello world!<br>";
+print "I am about to learn PHP";
+?>
+
+<?php
+
+$txt1 = "Learn PHP";
+$txt2 = "W3Schools.com";
+$x = 5;
+$y = 4;
+
+print "<h2>" . $txt1 . "/h2";
+print "Study PHP at " . $txt2 . "br";
+print $x + $y;
+?>
+
+---***---
+PHP Data Types : string, integer, Float(floating point number - also called double), Boolean, Object, NULL, Resource 
+
+<?php
+
+$x = "Hello World!";
+$y = 'Hello World!';
+
+echo $x;
+echo "<br>";
+echo $y;
+?>
+
+<?php
+$x = 5985;
+var_dump($x); // The PHP var_dump() function returns the data type and value
+?>
+
+<?php
+$x = 10.365;
+var_dump($x);
+?>
+
+--- PHP Boolean ---
+<?php
+$x = true;
+$y = false;
+?>
+
+--- PHP Array ---
+<?php
+$cars = array("Volvo","BMW","Toyota");
+var_dump($cars);
+?>
+
+--- PHP Object ---
+<?php
+
+class Car {
+	public $collor;
+	public $model;
+	public function __construct($color, $model) {
+		$this ->collor = $ $collor;
+		$this-> model = $model; 
+	}
+	public function message() {
+	return "My car is a " . $this-> collor . " " . $this->model . "!";
+	}
+}
+
+$myCar = new Car("black", "Volvo");
+echo $myCar -> message();
+echo "<br>";
+$myCar = new Car("red", "Toyota");
+echo $myCar -> message();
+
+?>
+
+---***---
+PHP NULL Value is a spacial data which can have only one value : NULL.
+
+<?php
+$x = "Hello world!";
+$x = null;
+var_dump($x);
+?>
+
+---***---
+PHP string functions 
+
+<?php
+echo strlen("Hello World!"); // output 12
+?>
+
+<?php
+echo str_word_count("Hello World!"); // output 2
+?>
+
+<?php 
+echo strrev("Hello world!"); // output dlrow olleH
+?>
+
+<?php
+echo strpos("Hello world!", "world"); //search for the text "world" in the string  "Hello world!" output 6
+?>
+
+<?php
+echo str_replace("world", "Dolly", "Hellow world!"); // output Hello Dolly
+?>
+
+---***---
+PHP Numbers : 2, 256, -256, 10358, -179567 are all integers.
+
+<?php
+// Check if the type of a variable is integer 
+$x = 5985;
+var_dump(is_int($x));
+
+echo "<br>";
+
+// Check again...
+$x = 59.85;
+var_dump(is_int($x));
+?>
+
+--- PHP floats ---
+<?php
+$x = 10.365;
+var_dump(is_float($x));
+?>
+
+--- PHP Infinity ---
+<?php
+$x = 1.9e411;
+var_dump($x);
+?>
+
+--- PHP NaN stands for Not a Number. is_nan function to check a value is not a number ---
+
+<?php
+$x = acos(8); // Invalid calculation will return a NaN value
+var_dump($x);
+?>
+
+--- PHP Numerical Strings ---
+
+<?php
+$x = 5985;
+var_dump(is_numeric($x));
+
+$x = "5985";
+var_dump(is_numeric($x));
+
+$x = "59.85" + 100;
+var_dump(is_numberic($x));
+
+$x = "Hello";
+var_dump(is_numeric($x));
+?>
+
+--- PHP Casting Strings and Floats to Integers ---
+
+<?php
+// Cast float to int 
+$x = 23465.768;
+$int_cast = (int)$x;
+echo $int_cast;
+
+echo "<br>";
+
+// Cast string to int
+$x = "23465.768";
+$int_cast = (int)$x;
+echo $int_cast;
+?>
+
+--- PHP Math has a set of functions that allows you to perform mathematical tasks on numbers. ---
+
+<?php
+echo(pi()); // returns 3.1415926535989
+?>
+
+--- PHP min() and max() Functions ---
+
+<?php
+echo(min(0, 150, 30, 20, -8, -200)); // returns -200
+echo(max(0, 150, 30, 20, -8, -200)); // returns 150
+?>
+
+--- PHP abs() Function returns the absolute(positive) value of a number ---
+
+<?php
+echo(abs(-6.7)); // returns 6.7
+?>
+
+--- PHP sqrt() function returns the square root of a number. ---
+
+<?php
+echo(sqrt(64)); // returns 8
+?>
+
+--- PHP round() function rounds a floating-point number to its nearest integer ---
+
+<?php
+echo(round(0.60)); // return 1
+echo(round(0.49)); // return 0
+?>
+
+--- PHP Random Numbers rand() function generates a random number ---
+
+<?php
+echo(rand());
+?>
+
+<?php
+echo(rand(10, 100));
+?>
+
+--- PHP Constants are like variables except that once they are defined they can not be changed or undefined ---
+To create a constant, use the define() function.
+
+<?php
+define("GREETING", "Welcome to W3School.com");
+echo GREETING;
+?>
+
+<?php
+define("GREETING", "Welcome to W3School.com"), true; // case-Insensitive constant name
+echo greeting;
+?>
+
+--- PHP Constan Arrays ---
+
+<?php
+define("cars", [ 
+	"Alfa Romeo",
+	"BMW",
+	"Toyota"
+]);
+echo cars[0];
+?>
+
+--- PHP constants are Global ---
+
+<?php
+define("GREETING", "Welcome to W3Schools.com");
+
+function myTest(){
+ echo GREETING;
+}
+
+myTest();
+?>
+
+---***---
+PHP Operators 
++,-,*,/,%,**
+
+"x=y : x=y" , "x+=y : x=x+y" , "x-=y : x=x-y , "x*=y : x=x*y" , "x/=y : x=x/y" , "x%=y : x=x%y" 
+
+PHP Comparison Operators
+
+$x == $y : returns true if $x is equal to $y
+$x === $y : returns true if $x is equal to $y, and they are of the same type
+$x ! = $Y : returns true if $X is not equal to $y
+$x <> $y : returns true if $x is not equal to $y
+$x ! = = $y : return true if $x is not equal to $y, or they are not of the same type
+$x > $y : returns ture if x is greater than $y
+$x < $y : returns true if $x is less than $y
+$x > = $y : returns true if $x is greater than or equal to $y
+$x < = $y : returns true if $x is less than or equal to $y
+$x < = > $y : spaceship return an integer less than,equal to, or greater than zero, depending on if $x is less than, equal to, or greater than $y. Introduced in PHP7.
+
+PHP Increment/Decrement Operators
+
+++$x : Increments $x by one, than returns $x 
+$x++ : Returns $x, than Increments $x by one 
+--$x : Decrements $x by one, than returns $x
+$x-- : Returns $x, than decrements $x by one 
+
+PHP Logical Operators 
+
+$x and $y : True if both $x and $y are true 
+$x or $y : True if either $x or $y is true 
+$x xor $y : True if either $x or $y is true but not both
+$x && $y : True if both $x and $y are true 
+$x || $y : True if either $x or $y is true 
+$$x : True if $x is not true 
+
+--- PHP String Operators ---
+$txt1 . $txt2 : Concatenation of $txt1 and $txt2 
+$txt1 .= $txt2 : Appends $txt2 to $txt1
+
+--- PHP Array Operators ---
+$x = $y : Union of $x and $y
+$x == $y : Returns true if $x and $y have the same key/value pairs
+$x === $y : Returns true if $x and $y have the same key/value pairs in the same order and of the same types
+$x ! = $y : Returns true if $x is not equal to $y
+$x <> $y : Returns true if $x is not equal to $y
+$x !== $y : Returns true if $x is not identical to $y
+
+--- PHP Conditional Assignment Operator ---
+$x = expr1 ? expr2 : expr3 [ Returns the value of $x. The value of $x is expr2 if expr1 = TRUE. The value of $x is expr3 if expr1 = FALSE ]
+
+<!DOCTYPE html>
+<html>
+<body>
+ <?php
+	// if empthy($user) = TRUE, set $status = "anonymous"
+	echo $status = (empthy($user)) ? "anonymous": "logged in";
+	echo(<br>);
+	
+	$user = "John Doe";
+	// if empthy($user) = FALSE, set $status = "logged in"
+	echo $status = (empthy($user)) ? "anonymous" : "logged in" ;
+ ?>
+</body>
+</html>
+
+$x = expr1??expr2 [ Returns the value of $x. The value of $x. The value of $x is expr1 exits, and is not NULL. If expr1 does not exist, or is NULL, the value of $x is expr2. Introduced in PHP7 ]
+
+<!DOCTYPE html>
+<html>
+	<body>
+		<?php
+		// variable $user is the value of $_GET['user']
+		// and 'anonymous' if it does not exist
+		echo $user = $_GET["user"] ?? "anonymous";
+		echo(<br>);
+
+		// variable $collor is "red" if $collor does not exist or is null
+		echo $collor = $collor ?? "red";
+		?>
+	</body>
+</html>
+
+--- PHP - The if Statement ---
+Syntax
+
+if(condition){
+	code to be executed if condition is true;
+}
+
+<?php
+$t = date("H");
+
+if ($t < "20") {
+	echo "Have a good day!";
+}
+?>
+
+Syntax
+
+if(condition){
+	code to be executed if condition is true;
+	} else {
+		code to be executed if condition is false;
+	}
+
+<?php
+$t = date("H");
+
+if ($t < "20"){
+	echo "Have a good day!";
+	} else {
+		echo "Have a night!";
+	}
+?>
+
+
+--- PHP - The if...elseif...else Statement ----
+<!DOCTYPE html>
+<html>
+<body>
+<?php
+$t =date("H");
+echo "<p>The hour (of the server) is " . $t;
+echo ", and will give the following message:</p>";
+
+if ($t < "10"){
+	echo "Have a good morning!";
+	} elseif ($t < "20"){
+		echo "have a good day!";
+		} else {
+			echo "Have a good night!";
+		}
+?>
+
+</body>
+</html>
+
+
+--- PHP - The switch Statement used to sllect one of many blocks of code to be executed ---
+Syntax
+
+switch (n){
+	case label1:
+		code to be executes if n=label1;
+		break;
+	case label2:
+		code to be executed if n=label2;
+		break;
+	case label3:
+		code to be executed if n=label3;
+		break;
+		...
+	default:
+		code to be execute if n is differrent from all lables;
+}
+
+
+<?php
+$favcolor = "red";
+
+switch ($favcollor){
+	echo "Your favorite collor is red!";
+	break;
+	case "blue";
+	echo "Your favorite collor is blue!";
+	case "green":
+	echo "Your favorite collor is green!";
+	break;
+	default:
+	echo "Your favorite collor is neither red, blue, nor green!";
+}
+?>
+
+--- PHP Loops ---
+- while - loops through a block of code as long as the spacified is true 
+- do...while - loops through a block of code once, and then repeats the loop as the specifled condition is true 
+- for - loops through a block of code for each element in an array
+--- PHP while Loops ---
+Syntax
+
+while (condition is true){
+	code to be executed;
+}
+
+<?php
+$x = 1;
+
+while($x <= 5){
+	echo "The number is: $x <br>";
+	$x++;
+}
+?>
+
+<?php
+$x = 0;
+
+while($x <= 100){
+	echo "The number is : $x <br>";
+	$x+=10;
+}
+?>
+
+--- PHP do...while loop - loops through a block of code once, and then repeats the loop as long as the specified condition is true. ---
+
+Syntax 
+
+do {
+	code to be executed;
+} while (condition is true);
+
+<?php
+$x = 1;
+
+do {
+	echo "The number is: $x <br>";
+	$x++;
+} while ($x <= 5);
+?>
+
+<?php
+// test the condition
+$x = 6;
+
+do {
+	echo "The number is $x <br>";
+	$x++;
+} while ($x <= 5);
+?>
+
+--- PHP for loop - Loops through a block of code a specifield number of time. ---
+Syntax 
+
+for (init counter; test counter; increment counter){
+	code to be executed for each iteration;
+}
+
+<?php 
+for ($x = 0; $x <= 10; $x++){
+	echo "The number is: $x <br>";
+}
+?>
+
+<?php
+for ($x = 0; $x <= 100; $x+=10){
+	echo "The number is: $x <br>";
+}
+?>
+
+--- PHP foreach Loop - Loops through a block of code for each element in an array ---
+Syntax 
+
+foreach ($array as $value) {
+	code to be execute;
+}
+
+<?php
+$collors = array("red", "green", "blue", "yellow");
+
+foreach ($collors as $value){
+	echo "$value <br>";
+}
+?>
+
+<?php
+$age = array("Peter" => "35", "Ben" => "37", "Joe" => "43");
+
+foreach($age as $x => $val) {
+	echo "$x = $val<br>";
+}
+?>
+
+--- PHP Break and Continue --- 
+<?php
+for ($x = 0; $x < 10; $x++) {
+	if ($x == 4) {
+		break;
+	}
+	echo "The number is $x <br>";
+}
+?>
+
+<?php
+for ($x =0; $x < 10; $x++){
+	if ($x == 4){
+		continue;
+	}
+	echo "The number is: $x <br>";
+}
+?>
+
+--- PHP Break and Continue in While Loop ---
+<?php
+$x = 0;
+
+while ($x < 10){
+	if ($x == 4) {
+		break;
+	}
+	echo "The number is: $x <br>";
+	$x++;
+}
+?>
+
+<?php
+$x = 0;
+
+while($x < 10){
+	if ($x == 4){
+	$x++;
+	contonue;
+	}
+	echo "The number is: $x <br>";
+	$x++;
+}
+?>
+
+--- PHP User Defined Functions ---
+Synteax
+
+function functionName(){
+	code to be executed;
+}
+
+<?php
+function writeMsg() {
+	echo "Hello world!"
+}
+
+writeMsg(); //call the function
+?>
+
+--- PHP Function Arguments ---
+<?php
+function familyName($fname){
+	echo "$fname Refsnes.<br>";
+}
+
+familyName("Jani");
+familyName("Heng");
+familyName("Stale");
+familyName("Kai Jim");
+familyName("Borge");
+?>
+
+<?php
+function familyName($fname, $year){
+	echo "$fname Refsnes. Born in $year <br>";
+}
+
+familyName("Hege", "1975");
+familyName("Stale","1999");
+familyName("Kai Jim", "1832");
+?>
+
+<?php declare(strict_types=1); // strict requirement
+
+function addNumbers(int $a, int $b ) {
+ return $a + $b;
+}
+echo addNumbers(5, "5 days");
+// since strict is enabled and "5 days" is not an integer, an error will be thrown
+?>
+
+<?php declare(strict_types=1); // strict requirement
+function setHeight(int $minheight =50){
+ echo "The height is : $minheight <br>";
+}
+
+setHeight(350);
+setHeight(); // will use the default value of 50
+setHeight(135);
+setHeight(80);
+?>
+
+<?php declare(strict_types=1); // strict requirement
+function sum(int $x, int $y){
+ $z = $x + $y;
+ return $z;
+}
+
+echo "5 + 10 = " . sum(5, 10) . <br>;
+echo "7 + 13 = " . sum(7, 13) . <br>;
+echo "2 + 4 = " . sum(2,4) . <br>;
+?>
+
+<?php declare(strict_types=1); // strict requirement
+function addNumbers(float $a, float $b) : float {
+ return $a + $b;
+}
+echo addNumbers(1.2, 5.2);
+?>
+
+<?php declare(strict_types=1); // strict requirement
+function addNumbers(float $a, float $b) : int {
+ return (int)($a + $b);
+}
+echo addNumbers(1.2, 5.2);
+?>
+
+<?php
+function add_five(&$value) {
+ $value += 5;
+}
+
+$num = 2;
+add_five($num);
+echo $num;
+?>
+
+--- PHP Array ---
+
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+echo "I like" . cars[0] . ", " . cars[1] . ", " . $cars[2] . ".";
+?>
+
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+echo count($cars);
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     
+
+
+
+
+
